@@ -1,0 +1,13 @@
+NO ./assets/walls/north
+SO ./assets/walls/south
+WE ./assets/walls/west
+EA ./assets/walls/east
+
+F 220,100,0
+C 225,30,0
+
+    111111111111111
+1111100000000000001
+1110000000000000001
+1100000000000000111
+11111111111111111
