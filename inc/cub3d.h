@@ -6,7 +6,7 @@
 /*   By: soelalou <soelalou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 09:58:51 by soelalou          #+#    #+#             */
-/*   Updated: 2024/05/16 17:52:05 by soelalou         ###   ########.fr       */
+/*   Updated: 2024/05/30 09:44:17 by soelalou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,24 +43,25 @@
 # define D 0x0064
 # define R 0x0072
 
+typedef struct s_textures
+{
+	char	*north;
+	char	*south;
+	char	*west;
+	char	*east;
+	char	*floor;
+	char	*ceiling;
+}	t_textures;
+
 typedef struct s_player
 {
 	int		x;
 	int		y;
+	int		z;
 	int		moves;
-	int		collectibles;
 	char	direction;
 	char	*name;
 }	t_player;
-
-typedef struct s_ghost
-{
-	int				x;
-	int				y;
-	int				moves;
-	char			direction;
-	struct s_ghost	*next;
-}	t_ghost;
 
 typedef struct s_img
 {
@@ -71,8 +72,7 @@ typedef struct s_img
 	void	*addr;
 	void	*wall;
 	void	*floor;
-	void	*collectible;
-	void	*exit;
+	void	*ceiling;
 	void	*pause;
 }	t_img;
 
@@ -80,13 +80,10 @@ typedef struct s_map
 {
 	int		width;
 	int		height;
-	int		collectibles;
-	int		exit[2];
-	int		player[2];
-	int		**collectibles_pos;
+	int		player[3];
 	char	*path;
 	char	*name;
-	char	*map[256];
+	char	**map;
 	t_img	img;
 }	t_map;
 
@@ -96,8 +93,8 @@ typedef struct s_game
 	bool		end;
 	void		*mlx;
 	void		*window;
+	t_textures	*textures;
 	t_map		*map;
-	t_ghost		*ghost;
 	t_player	*player;
 }	t_game;
 
@@ -126,7 +123,5 @@ void	free_images(t_game *game);
 void	send_message(t_game *game, bool success);
 void	pause_game(t_game *game);
 char	**split(char *file, int height);
-void	lstadd_back(t_ghost **lst, t_ghost *new_lst);
-t_ghost	*lstlast(t_ghost *lst);
 
 #endif

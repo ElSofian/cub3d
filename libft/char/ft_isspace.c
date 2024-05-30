@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lstlast.c                                          :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soelalou <soelalou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/24 14:19:27 by soelalou          #+#    #+#             */
-/*   Updated: 2024/02/26 03:14:36 by soelalou         ###   ########.fr       */
+/*   Created: 2024/05/30 08:42:51 by soelalou          #+#    #+#             */
+/*   Updated: 2024/05/30 08:42:57 by soelalou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../libft.h"
 
-t_ghost	*lstlast(t_ghost *lst)
+int ft_isspace(char c)
 {
-	t_ghost	*tmp;
-
-	if (!lst)
-		return (NULL);
-	tmp = lst;
-	while (tmp && tmp->next)
-		tmp = tmp->next;
-	return (tmp);
+    return (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r');
 }
