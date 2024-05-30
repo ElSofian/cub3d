@@ -6,13 +6,14 @@
 /*   By: soelalou <soelalou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 08:42:51 by soelalou          #+#    #+#             */
-/*   Updated: 2024/05/30 08:42:57 by soelalou         ###   ########.fr       */
+/*   Updated: 2024/05/30 11:57:51 by soelalou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-int ft_isspace(char c)
+int	ft_isspace(char c)
 {
-    return (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r');
+	return (c == ' ' || c == '\t' || c == '\n' || c == '\v'
+		|| c == '\f' || c == '\r');
 }

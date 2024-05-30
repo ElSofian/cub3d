@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_occ_tab.c                                       :+:      :+:    :+:   */
+/*   ft_tabchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soelalou <soelalou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/26 03:20:19 by soelalou          #+#    #+#             */
-/*   Updated: 2024/05/30 11:57:07 by soelalou         ###   ########.fr       */
+/*   Created: 2024/05/30 11:51:50 by soelalou          #+#    #+#             */
+/*   Updated: 2024/05/30 11:57:11 by soelalou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-int	ft_occ_tab(char **tab, char c)
+bool	ft_tabchr(char **tab, char *str)
 {
-	int	i;
-	int	j;
-	int	occ;
+	int		i;
+	bool	present;
 
 	i = 0;
-	occ = 0;
-	if (!tab || !c)
-		return (0);
+	present = false;
 	while (tab[i])
 	{
-		j = 0;
-		while (tab[i][j])
-		{
-			if (tab[i][j] == c)
-				occ++;
-			j++;
-		}
+		if (ft_strncmp(tab[i], str, ft_strlen(str)))
+			present = true;
 		i++;
 	}
-	return (occ);
+	return (present);
 }

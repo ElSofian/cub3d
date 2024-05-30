@@ -30,7 +30,7 @@ SRC			=	char/ft_isalnum.c char/ft_isalpha.c char/ft_isascii.c char/ft_isdigit.c 
 				str/ft_split.c str/ft_strcat.c str/ft_strchr.c str/ft_strcmp.c str/ft_strcpy.c str/ft_strdup.c \
 				str/ft_striteri.c str/ft_strjoin.c str/ft_strlcat.c str/ft_strlcpy.c str/ft_strlen.c str/ft_strmapi.c \
 				str/ft_strncmp.c str/ft_strnstr.c str/ft_strrchr.c str/ft_strtrim.c str/ft_substr.c str/is_equal.c \
-				tab/ft_tabjoin.c tab/ft_occ_tab.c tab/ft_tabdup.c tab/ft_tabsize.c tab/ft_freetab.c
+				tab/ft_tabjoin.c tab/ft_occ_tab.c tab/ft_tabchr.c tab/ft_tabdup.c tab/ft_tabsize.c tab/ft_freetab.c
 
 OBJ_DIR		=	bin
 OBJ			=	$(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))

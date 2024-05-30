@@ -58,6 +58,7 @@ int		ft_occ_tab(char **tab, char str);
 int		ft_tabsize(char **tab);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
+bool	ft_tabchr(char **tab, char *str);
 bool	is_equal(char *s1, char *s2, ...);
 char	*get_next_line(int fd);
 char	*get_next_line_wn(int fd);
