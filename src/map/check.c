@@ -6,7 +6,7 @@
 /*   By: soelalou <soelalou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 17:50:04 by soelalou          #+#    #+#             */
-/*   Updated: 2024/05/16 18:09:35 by soelalou         ###   ########.fr       */
+/*   Updated: 2024/05/21 17:13:26 by soelalou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,20 +85,21 @@ static void	check_walls(t_game *game)
 	check_middle_walls(game);
 }
 
-static void	check_over_and_missing(t_game *game)
+static void	check_over_and_missing(t_game *game, char *str)
 {
-	if (ft_occ_tab(game->map->map, 'N') > 1
-		|| ft_occ_tab(game->map->map, 'S') > 1
-		|| ft_occ_tab(game->map->map, 'E') > 1
-		|| ft_occ_tab(game->map->map, 'W') > 1)
-		error_map("Map contains more than one player.", game);
-	else if (ft_occ_tab(game->map->map, 'N') == 0
-		&& ft_occ_tab(game->map->map, 'S') == 0
-		&& ft_occ_tab(game->map->map, 'E') == 0
-		&& ft_occ_tab(game->map->map, 'W') == 0)
-		error_map("Map doesn't contains a player.", game);
-	else if (ft_occ_tab(game->map->map, '0') < 1)
-		error_map("Map doesn't contains empty space.", game);
+	int		i;
+	bool	present;
+
+	i = 0;
+	present = false;
+	while (game->map->map[i])
+	{
+		if (ft_strncmp(game->map->map[i], str, ft_strlen(str)))
+			present = true;
+		i++;
+	}
+	if (!present)
+		error_map("Map is invalid. Missing or over wall.", game);
 }
 
 
@@ -111,7 +112,12 @@ void	check(t_game *game)
 	len = ft_strlen(game->map->name);
 	if (len < 4 || ft_strncmp(game->map->name + len - 4, ".cub", 4))
 		error_map("The extension of the file is not .cub", game);
-	
+	check_over_and_missing(game, "NO");
+	check_over_and_missing(game, "SO");
+	check_over_and_missing(game, "WE");
+	check_over_and_missing(game, "EA");
+	check_over_and_missing(game, "F");
+	check_over_and_missing(game, "C");
 	check_walls(game);
 	check_line_size(game);
 }
