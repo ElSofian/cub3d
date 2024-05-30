@@ -6,7 +6,7 @@
 /*   By: soelalou <soelalou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 15:46:41 by soelalou          #+#    #+#             */
-/*   Updated: 2024/05/30 12:03:43 by soelalou         ###   ########.fr       */
+/*   Updated: 2024/05/30 12:23:40 by soelalou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,6 @@ static int	is_config_line(t_game *game, char *line)
 	else
 		return (free(trimmed_line), 0);
 	return (free(trimmed_line), 1);
-}
-
-static int	is_empty_line(char *line)
-{
-	while (*line)
-	{
-		if (!ft_isspace(*line))
-			return (0);
-		line++;
-	}
-	return (1);
 }
 
 int	create_map(t_game *game)

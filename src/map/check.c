@@ -6,7 +6,7 @@
 /*   By: soelalou <soelalou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 17:50:04 by soelalou          #+#    #+#             */
-/*   Updated: 2024/05/30 12:06:08 by soelalou         ###   ########.fr       */
+/*   Updated: 2024/05/30 12:26:44 by soelalou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ void	check(t_game *game)
 	len = ft_strlen(game->map->name);
 	if (len < 4 || ft_strncmp(game->map->name + len - 4, ".cub", 4))
 		error_map("The extension of the file is not .cub", game);
+	check_instructions(game);
 	if (!ft_tabchr(game->map->map, "NO") || !ft_tabchr(game->map->map, "SO")
 		|| !ft_tabchr(game->map->map, "WE") || !ft_tabchr(game->map->map, "EA")
 		|| !ft_tabchr(game->map->map, "F") || !ft_tabchr(game->map->map, "C"))

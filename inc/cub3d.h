@@ -6,7 +6,7 @@
 /*   By: soelalou <soelalou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 09:58:51 by soelalou          #+#    #+#             */
-/*   Updated: 2024/05/30 11:58:02 by soelalou         ###   ########.fr       */
+/*   Updated: 2024/05/30 12:24:06 by soelalou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ int		close_window(t_game *game);
 int		create_map(t_game *game);
 void	render_image(t_game *game, void *img, int x, int y);
 void	check(t_game *game);
+void	check_instructions(t_game *game);
 
 // Utils
 
@@ -122,5 +123,6 @@ void	free_images(t_game *game);
 void	send_message(t_game *game, bool success);
 void	pause_game(t_game *game);
 char	**split(char *file, int height);
+int		is_empty_line(char *line);
 
 #endif
