@@ -6,26 +6,36 @@
 /*   By: soelalou <soelalou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 12:08:39 by soelalou          #+#    #+#             */
-/*   Updated: 2024/05/30 12:27:36 by soelalou         ###   ########.fr       */
+/*   Updated: 2024/06/01 14:09:06 by soelalou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include <unistd.h>
+#include <errno.h>
+#include <string.h>
 
-static void	check_texture_path(char *line, t_game *game)
+static char	*check_texture_path(char *line, t_game *game)
 {
+	int		fd;
+	char		*path;
 	char	**parts;
 
 	parts = ft_split(line, ' ');
-	(void)game;
-	// if (!parts[1] || !parts[0])
-	// 	error_map("Invalid texture path format.", game);
-	// if (open(parts[1], O_RDONLY) < 0 || access(parts[1], F_OK) < 0)
-	// 	error_map("Texture path does not exist.", game);
+	if (!parts[1] || !parts[0])
+		error_map("Invalid texture path format.", game);
+	fd = open(parts[1], O_RDONLY);
+	if (fd < 0)
+		error_map("Texture path is a directory or doesn't exist.", game);
+	close(fd);
+	path = ft_strdup(parts[1]);
 	free(parts);
+	if (!path)
+		error_map("An error occured while copying texture path.", game);
+	return (path);
 }
 
-static void	check_color_format(char *line, t_game *game)
+static char	*check_color_format(char *line, t_game *game)
 {
 	int		i;
 	int		value;
@@ -48,16 +58,26 @@ static void	check_color_format(char *line, t_game *game)
 		i++;
 	}
 	free(components);
+	color = ft_strdup(color);
+	if (!color)
+		error_map("An error occured while copying color.", game);
+	return (color);
 }
 
 static void	check_instruction(char *line, t_game *game)
 {
-	printf("line: %s\n", line);
-	if (ft_strncmp(line, "NO", 2) == 0 || ft_strncmp(line, "SO", 2) == 0
-		|| ft_strncmp(line, "WE", 2) == 0 || ft_strncmp(line, "EA", 2) == 0)
-		check_texture_path(line, game);
-	else if (ft_strncmp(line, "F", 1) == 0 || ft_strncmp(line, "C", 1) == 0)
-		check_color_format(line, game);
+	if (ft_strncmp(line, "NO", 2) == 0)
+		game->textures->north = check_texture_path(line, game);
+	else if (ft_strncmp(line, "SO", 2) == 0)
+		game->textures->south = check_texture_path(line, game);
+	else if (ft_strncmp(line, "WE", 2) == 0)
+		game->textures->west = check_texture_path(line, game);
+	else if (ft_strncmp(line, "EA", 2) == 0)
+		game->textures->east = check_texture_path(line, game);
+	else if (ft_strncmp(line, "F", 1) == 0)
+		game->textures->floor = check_color_format(line, game);
+	else if (ft_strncmp(line, "C", 1) == 0)
+		game->textures->ceiling = check_color_format(line, game);
 	else
 		error_map("Invalid map instruction.", game);
 }
@@ -74,7 +94,7 @@ void	check_instructions(t_game *game)
 		error_map("An error occured while opening the map file.", game);
 	while (i < 6)
 	{
-		line = get_next_line(fd);
+		line = get_next_line_wn(fd);
 		if (!line)
 			error_map("Missing map instruction.", game);
 		if (is_empty_line(line))

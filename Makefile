@@ -6,7 +6,7 @@
 #    By: soelalou <soelalou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/02 19:46:45 by soelalou          #+#    #+#              #
-#    Updated: 2024/04/18 09:15:55 by soelalou         ###   ########.fr        #
+#    Updated: 2024/06/01 12:58:00 by soelalou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ NAME        = cub3D
 LIBFT		= libft/libft.a
 CC          = cc
 CFLAGS      = -Wall -Wextra -Imlx -Iinc -g3
-MLXFLAGS    = -Lmlx -lXext -lX11 -lmlx
+MLXFLAGS    = -Lmlx -lmlx -lX11 -lXext
 RM          = rm -rf
 
 SRCS_DIR    = src

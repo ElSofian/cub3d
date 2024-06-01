@@ -6,7 +6,7 @@
 /*   By: soelalou <soelalou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 09:58:51 by soelalou          #+#    #+#             */
-/*   Updated: 2024/05/30 12:24:06 by soelalou         ###   ########.fr       */
+/*   Updated: 2024/06/01 14:54:30 by soelalou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdbool.h>
 # include <sys/time.h>
 # include <time.h>
+# include <math.h>
 # include "../libft/libft.h"
 # include "../mlx/mlx.h"
 

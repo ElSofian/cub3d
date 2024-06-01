@@ -6,7 +6,7 @@
 /*   By: soelalou <soelalou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 13:32:39 by soelalou          #+#    #+#             */
-/*   Updated: 2024/05/30 12:26:01 by soelalou         ###   ########.fr       */
+/*   Updated: 2024/06/01 13:56:34 by soelalou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ static void	init_player(t_game *game)
 
 static int	init_image(t_game *game)
 {
-	int	size;
+	// int	size;
 
-	size = SIZE;
+	// size = SIZE;
 	game->map->img.img = NULL;
 	// game->map->img.img = mlx_new_image(game->mlx,
 	// 		(game->map->width / game->map->height) * SIZE,
