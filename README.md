@@ -1,6 +1,6 @@
 # Cub3D – 42 Paris
 
-![cub3d](https://img.shields.io/badge/42Paris-Cub3D-blue)
+![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white)
 
 ## 📖 Description
 
