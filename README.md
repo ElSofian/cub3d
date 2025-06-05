@@ -20,7 +20,7 @@ Ce projet vise à valider les acquis en manipulation bit‐maps, en algorithmes 
 
 ## 🛠️ Prérequis
 
-- Un environnement UNIX (Linux ou macOS)
+- Un environnement UNIX
 - Un compilateur C (gcc, cc...)
 - Make
 
