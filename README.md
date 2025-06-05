@@ -34,3 +34,7 @@ Ce projet vise à valider les acquis en manipulation bit‐maps, en algorithmes 
    cd cub3d
    make
    ./cub3d assets/maps/test.cub (ou tout autre map)
+
+
+## 🖋️ Crédits
+Elaloui Sofian & Balthazar Borry
